@@ -1,17 +1,16 @@
 from distutils.command.upload import upload
 from unittest.util import _MAX_LENGTH
 from django.db import models
-import cx_Oracle
-cx_Oracle.init_oracle_client(lib_dir=r"C:\oracle\instantclient_21_6")
 import os 
 
 # Create your models here.
 
 class Noticia(models.Model):
-    idNoticia =models.IntegerField(primary_key=True, verbose_name='Id de la noticia')
-    titulo =models.CharField(max_length=50, verbose_name='Titolo de la noticia')
-    encabezado_noticia =models.CharField(max_length=50, verbose_name='Encabezado de la noticia')
-    cuerpo_noticia =models.CharField(max_length=250, verbose_name='Cuerpo de la noticia')
+    idNoticia =models.AutoField(primary_key=True, verbose_name='Id de la noticia')
+    categoria =models.CharField(max_length=250, verbose_name='Categoria de la noticia', null=True, blank=True)
+    titulo =models.CharField(max_length=250, verbose_name='Titolo de la noticia')
+    encabezado_noticia =models.CharField(max_length=250, verbose_name='Encabezado de la noticia')
+    cuerpo_noticia =models.TextField()
     foto_noticia =models.ImageField(upload_to="images/", null=True, blank=True)
     fecha =models.DateField()
 

@@ -1,10 +1,19 @@
+from webbrowser import get
 from django.shortcuts import render
 from .models import Noticia
 from .models import Periodista
 from django.http import HttpResponse
+from rest_framework import viewsets
+from .serializers import NoticiaSerializer
+
 
 
 # Create your views here.
+
+class NoticiaViewset(viewsets.ModelViewSet): 
+    queryset = Noticia.objects.all()
+    serializer_class = NoticiaSerializer
+
 
 def home(request):
 
@@ -14,16 +23,28 @@ def home(request):
         noticia.foto_noticia =  'media/' + str(noticia.foto_noticia)
     
 
-
     datos = {
         'noticias' : noticias
     }
-    print(datos)
 
     return render(request, 'core/home.html', datos)
 
 
+def noticias(request,id_noticia):
+   
+    noticias = Noticia.objects.get(idNoticia = id_noticia)
+    
+    
+    return render(request, 'core/noticias.html', {'noticias': noticias})
 
+
+
+
+
+
+
+def noticia(idNoticia, request):
+    return render(request, 'core/noticia.html')
 
 def login(request):
     return render(request, 'core/login.html')

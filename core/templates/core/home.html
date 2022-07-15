@@ -8,7 +8,8 @@
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <link type="text/css" rel="stylesheet" href='{% static "core/css/plantilla.css" %}'>
-    <title>Estoy probando otra vez</title>
+    <title>Caos News</title>
+    <link rel="icon" href="{% static 'core/icon/news.jpg'%}">
 
 </head>
 <body background="{% static 'core/img/fondo3.jpg'%}">
@@ -73,21 +74,21 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <a href="noticia-federer.html"><img src="{% static 'core/img/enc1.jpg'%}" class="img-carrusel  d-block w-100" alt="..."></a>
+        <a href=""><img src="{% static 'core/img/enc1.jpg'%}" class="img-carrusel  d-block w-100" alt="..."></a>
         <div class="carousel-caption d-none d-md-block">
           <h1>Federer no jugará Roland Garros</h2>
           <h3>Por primera vez en 22 años quedará fuera del Top 50.</h3>
         </div>
       </div>
       <div class="carousel-item">
-        <a href="noticia-muertos-ucrania.html"><img src="{% static 'core/img/enc2.jpg'%}" class="img-carrusel d-block w-100" alt="..."></a>
+        <a href=""><img src="{% static 'core/img/enc2.jpg'%}" class="img-carrusel d-block w-100" alt="..."></a>
         <div class="carousel-caption d-none d-md-block">
           <h1>Casi 2.000 civiles muertos</h1>
           <h3>ONU confirma casi 2.000 civiles muertos en Ucrania desde la invasión rusa</h3>
         </div>
       </div>
       <div class="carousel-item">
-        <a href="noticia-nicolas-zep.html"><img src="{% static 'core/img/enc3.jpg'%}" class="img-carrusel d-block w-100" alt="..."></a>
+        <a href=""><img src="{% static 'core/img/enc3.jpg'%}" class="img-carrusel d-block w-100" alt="..."></a>
         <div class="carousel-caption d-none d-md-block">
           <h1>Condenado a 28 años de cárcel</h1>
           <h3>Corte francesa declaró culpable a Nicolás Zepeda.</h3>
@@ -117,8 +118,8 @@
             {% for noticia in noticias %}
 
             <div class="noticia card text-white bg-dark col-md-3 col-ms-12  m-2">
-
-                 <img src="{{noticia.foto_noticia}}" alt="imagen noticia" class="ima-noticia card-img-top">
+       
+                 <img src="{{noticia.foto_noticia}}" alt="imagen noticia" class="ima-noticia card-img-top ">
 
                 <div class="card-body">
 
@@ -126,12 +127,13 @@
 
                     <p>{{noticia.encabezado_noticia}}</p>
 
-                    <a href="" class="btn btn-outline-light">Ver noticia</a>
+
+                    <a href="/noticias/{{noticia.idNoticia}}" class="btn btn-outline-light">Ver noticia</a>
 
                 </div>
 
             </div>
-
+            
             {% endfor %}
 
         </div>

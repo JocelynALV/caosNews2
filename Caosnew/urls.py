@@ -15,11 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from core.views import home, login, registro, horoscopo, periodista
+from core.views import NoticiaViewset, home, login, noticias, registro, horoscopo, periodista, NoticiaSerializer, noticias
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework import routers
 
 
+router = routers.DefaultRouter() #nos permite crear urls necesarias para nuestra api
+router.register('noticia', NoticiaViewset) #El viewset llama a todas las noticias  y aplica serializador  para pasarlas a Json
 
 
 urlpatterns = [
@@ -30,6 +33,8 @@ urlpatterns = [
     path('registro', registro, name='registro'),
     path('horoscopo', horoscopo, name='horoscopo'),
     path('periodista', periodista, name='periodista'),
+    path('api/', include(router.urls)),
+    path('noticias/<id_noticia>',noticias, name='noticias'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
